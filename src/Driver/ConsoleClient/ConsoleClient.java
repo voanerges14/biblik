@@ -28,18 +28,18 @@ public class ConsoleClient {
                 "";
     }
 
-    public static Book add(String str){
+    public static boolean add(String str){
 //        String str = scanner.nextLine();
-        return new Book(
+         library.addBook(new Book(
                 -1, str.split(" ")[1], str.split(" ")[2], str.split(" ")[3],
-                Integer.parseInt(str.split(" ")[4]));
+                Integer.parseInt(str.split(" ")[4])));
     }
 
     public static boolean remove(String str){
         List<Book> books = library.removeBook(str);
         if(books == null){
-            return true;
-
+            System.out.println(books.get(0).getName() + " no such book!");
+//            return false;
         }
         else if(books.size() == 1){
             System.out.println(books.get(0).getName() + " was remowed!");
@@ -55,26 +55,12 @@ public class ConsoleClient {
     }
 
 
-    public static boolean edit(String str){
-        List<Book> books = library.editBook(str);
-
+    public static boolean edit(String name){
         Book book = new Book();
-        System.out.println("new Name: ");
-        if(scanner.hasNext())
-            book.setName(scanner.next());
-        System.out.println("new Author: ");
-        if(scanner.hasNext())
-            book.setAuthor(scanner.next());
-        System.out.println("new Type: ");
-        if(scanner.hasNext())
-            book.setType(scanner.next());
-        System.out.println("new Number of pages: ");
-        if(scanner.hasNext())
-            book.setnPages(Integer.parseInt(scanner.next()));
+        List<Book> books = library.getBooksByName(name);
 
         if(books == null){
-            return true;
-
+            System.out.println(books.get(0).getName() + " no such book!");
         }
         else if(books.size() == 1){
             System.out.println(books.get(0).getName() + " was remowed!");
@@ -85,6 +71,21 @@ public class ConsoleClient {
                 System.out.println(book.toString());
             System.out.println("enter the id by book what you want to remove");
             library.removeBookById(Integer.parseInt(scanner.next()));
+
+
+            System.out.println("new Name: ");
+            if(scanner.hasNext())
+                book.setName(scanner.next());
+            System.out.println("new Author: ");
+            if(scanner.hasNext())
+                book.setAuthor(scanner.next());
+            System.out.println("new Type: ");
+            if(scanner.hasNext())
+                book.setType(scanner.next());
+            System.out.println("new Number of pages: ");
+            if(scanner.hasNext())
+                book.setnPages(Integer.parseInt(scanner.next()));
+
         }
 
 
