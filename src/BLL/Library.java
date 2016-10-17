@@ -31,9 +31,9 @@ public class Library {
 
         return true;
     }
-//    public List<Book> findBooksWithTheSameName(String name){
-//        jdbcStore.get(name);
-//    }
+    public List<Book> getBooksByName(String name){
+        jdbcStore.get(name);
+    }
     public List<Book> removeBook(String name){
         books = (List<Book>) jdbcStore.get(name);
 
