@@ -16,6 +16,7 @@ public class Library {
     private String name;
     private List<Book> books = new ArrayList<>();
     private JDBCStore jdbcStore;
+
     public Library(){
         try {
             jdbcStore = new JDBCStore();
@@ -34,6 +35,7 @@ public class Library {
     public List<Book> getBooksByName(String name){
         jdbcStore.get(name);
     }
+
     public List<Book> removeBook(String name){
         books = (List<Book>) jdbcStore.get(name);
 
@@ -63,22 +65,16 @@ public class Library {
             return null;
         }
         else if(books.size() == 1){
-            jdbcStore.edit(book);
+            jdbcStore.edit(book, book.getId());
             return books;
         }
         else {
             return books;
         }
-        return true;
     }
 
     public Collection<Book> showAllLibrary() throws SQLException, ClassNotFoundException {
         return books;
     }
-
-    public Collection<Book> showBooksWithTheSameName(){
-        return books;
-    }
-
 
 }

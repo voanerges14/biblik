@@ -21,6 +21,21 @@ public class ConsoleClient {
     private static Library library = new Library();
 
 
+    private static Book createNewBook(Book book){
+        System.out.println("new Name: ");
+        if(scanner.hasNext())
+            book.setName(scanner.next());
+        System.out.println("new Author: ");
+        if(scanner.hasNext())
+            book.setAuthor(scanner.next());
+        System.out.println("new Type: ");
+        if(scanner.hasNext())
+            book.setType(scanner.next());
+        System.out.println("new Number of pages: ");
+        if(scanner.hasNext())
+            book.setnPages(Integer.parseInt(scanner.next()));
+        return book;
+    }
 
     public static String help(){
         return " -help - use for show information about library\n" +
@@ -30,9 +45,10 @@ public class ConsoleClient {
 
     public static boolean add(String str){
 //        String str = scanner.nextLine();
-         library.addBook(new Book(
+        System.out.println(library.addBook(new Book(
                 -1, str.split(" ")[1], str.split(" ")[2], str.split(" ")[3],
-                Integer.parseInt(str.split(" ")[4])));
+                Integer.parseInt(str.split(" ")[4]))));
+        return true;
     }
 
     public static boolean remove(String str){
@@ -63,28 +79,20 @@ public class ConsoleClient {
             System.out.println(books.get(0).getName() + " no such book!");
         }
         else if(books.size() == 1){
-            System.out.println(books.get(0).getName() + " was remowed!");
+
+            library.editBook(createNewBook(books.get(0)));
+            System.out.println(books.get(0).getName() + " was edit!");
             return true;
         }
         else {
-            for(Book book: books)
+            for(Book _book: books)
                 System.out.println(book.toString());
-            System.out.println("enter the id by book what you want to remove");
-            library.removeBookById(Integer.parseInt(scanner.next()));
-
-
-            System.out.println("new Name: ");
-            if(scanner.hasNext())
-                book.setName(scanner.next());
-            System.out.println("new Author: ");
-            if(scanner.hasNext())
-                book.setAuthor(scanner.next());
-            System.out.println("new Type: ");
-            if(scanner.hasNext())
-                book.setType(scanner.next());
-            System.out.println("new Number of pages: ");
-            if(scanner.hasNext())
-                book.setnPages(Integer.parseInt(scanner.next()));
+            System.out.println("enter the id by book what you want to Edit");
+            int t = Integer.parseInt(scanner.next());
+            for(Book _book: books) {
+                if (t == _book.getId())
+                    library.editBook(createNewBook(_book), t);
+            }
 
         }
 
@@ -108,8 +116,7 @@ public class ConsoleClient {
                     System.out.println(library.showAllLibrary());
                     break;
                 case "-add":
-                    System.out.println(ConsoleClient.add(scanner.nextLine()).toString());
-                    library.addBook(ConsoleClient.add(scanner.nextLine()));
+                    ConsoleClient.add(scanner.nextLine());
                     break;
                 case "-remove":
                     System.out.println(remove(scanner.nextLine()));

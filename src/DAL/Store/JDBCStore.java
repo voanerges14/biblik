@@ -65,14 +65,14 @@ public class JDBCStore implements Storage{
 
 
     @Override
-    public void edit(Book book) {
+    public void edit(Book book, int id) {
         try (final PreparedStatement statement = this.connection.prepareStatement(
                 "UPDATE book SET name = ?, author = ?, type = ?, nPages = ? WHERE id = ?")) {
             statement.setString(1, book.getName());
             statement.setString(2, book.getAuthor());
             statement.setString(3, book.getType());
             statement.setInt(4, book.getnPages());
-            statement.setInt(5, book.getId());
+            statement.setInt(5, id);
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
