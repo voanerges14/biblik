@@ -38,28 +38,31 @@ public class Library {
             return false;
         }
     }
-    public List<Book> getBooksByName(String name){
-        jdbcStore.get(name);
-    }
-    public List<Book> removeBook(String name){
-        books = (List<Book>) jdbcStore.get(name);
 
-        if(books.isEmpty()){
+    public List<Book> getBooksByName(String name){
+        return (List<Book>) jdbcStore.get(name);
+    }
+
+    public List<Book> removeBook(String name) {
+        books = getBooksByName(name);
+
+        if (books.isEmpty()) {
             return null;
-        }
-        else if(books.size() == 1){
+        } else if (books.size() == 1) {
             jdbcStore.delete(books.get(0).getId());
-            return books;
         }
-        else {
-            return books;
-        }
+        return books;
     }
 
     public boolean removeBookById(int id){
-
-        jdbcStore.delete(id);
-        return true;
+        try {
+            jdbcStore.delete(id);
+            return true;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public List<Book> editBook(Book book){
@@ -80,17 +83,10 @@ public class Library {
     }
 
     public Collection<Book> showAllLibrary() throws SQLException, ClassNotFoundException {
-        if(books.size() != 0)
-            return books;
-        
-        Collection<Book> emptyLibrary = new ArrayList<>();
-        emptyLibrary.add(new Book("Empty"));
-        return emptyLibrary;
-    }
-
-    public Collection<Book> showBooksWithTheSameName(){
+        books = (List<Book>) jdbcStore.books();
+        if(books.isEmpty()) {
+            books.add(new Book("Empty"));
+        }
         return books;
     }
-
-
 }
