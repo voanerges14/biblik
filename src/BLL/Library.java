@@ -14,8 +14,9 @@ import java.util.List;
  */
 public class Library {
     private String name;
-    private List<Book> books = new ArrayList<>();
+    private List<Book> books;
     private JDBCStore jdbcStore;
+
     public Library(){
         try {
             jdbcStore = new JDBCStore();
@@ -24,12 +25,18 @@ public class Library {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+        books = (List<Book>) jdbcStore.books();
     }
 
     public boolean addBook(Book book){
-
-
-        return true;
+        try {
+            jdbcStore.add(book);
+            return true;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 //    public List<Book> findBooksWithTheSameName(String name){
 //        jdbcStore.get(name);
@@ -73,7 +80,12 @@ public class Library {
     }
 
     public Collection<Book> showAllLibrary() throws SQLException, ClassNotFoundException {
-        return books;
+        if(books.size() != 0)
+            return books;
+        
+        Collection<Book> emptyLibrary = new ArrayList<>();
+        emptyLibrary.add(new Book("Empty"));
+        return emptyLibrary;
     }
 
     public Collection<Book> showBooksWithTheSameName(){

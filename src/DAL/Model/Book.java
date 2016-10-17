@@ -17,6 +17,9 @@ public class Book {
 
     }
 
+    public Book(String name){
+        this.name = name;
+    }
 
     public Book(int id, String name, String author, String type, int nPages) {
         this.name = name;
