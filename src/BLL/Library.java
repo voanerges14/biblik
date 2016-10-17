@@ -66,18 +66,25 @@ public class Library {
     }
 
     public List<Book> editBook(Book book){
-
         books = (List<Book>) jdbcStore.get(name);
 
         if(books.isEmpty()){
             return null;
         }
         else if(books.size() == 1){
-            jdbcStore.edit(book, book.getId());
-            return books;
+            jdbcStore.edit(book);
         }
-        else {
-            return books;
+        return books;
+    }
+
+    public boolean editBookById(Book book){
+        try {
+            jdbcStore.edit(book);
+            return true;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
     }
 
