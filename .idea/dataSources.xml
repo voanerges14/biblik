@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
     <data-source source="LOCAL" name="Derby (Embedded) - demo" uuid="d21a9566-3983-4891-b55c-c96ddd7c60ce">
       <driver-ref>derby.embedded</driver-ref>
@@ -8,6 +9,10 @@
       <jdbc-url>jdbc:derby:localhost:1527/demo;create=true</jdbc-url>
     </data-source>
     <data-source source="LOCAL" name="AZURE" uuid="62dbba8f-ebcd-4f76-8fe7-fa73deb1e195">
+=======
+  <component name="DataSourceManagerImpl" format="xml" hash="0">
+    <data-source source="LOCAL" name="MySQL - library@localhost" uuid="e025f6ea-850c-4b63-8d63-d27cb84417ca">
+>>>>>>> dd4ee2018fdc22a60a6db2ea1b561e3439b4a90a
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>

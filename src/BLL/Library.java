@@ -75,7 +75,6 @@ public class Library {
     }
 
     public List<Book> editBook(Book book){
-
         books = (List<Book>) jdbcStore.get(name);
 
         if(books.isEmpty()){
@@ -83,8 +82,24 @@ public class Library {
         }
         else if(books.size() == 1){
             jdbcStore.edit(book);
+<<<<<<< HEAD
         }
             return books;
+=======
+        }
+        return books;
+    }
+
+    public boolean editBookById(Book book){
+        try {
+            jdbcStore.edit(book);
+            return true;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+>>>>>>> dd4ee2018fdc22a60a6db2ea1b561e3439b4a90a
     }
 
     public Collection<Book> showAllLibrary() throws SQLException, ClassNotFoundException {
