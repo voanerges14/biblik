@@ -12,7 +12,7 @@ public interface Storage {
 
         public int add(final Book  book);
 
-        public void edit(final Book book, int id);
+        public void edit(final Book book);
 
         public void delete(final int bookId);
 

@@ -1,0 +1,8 @@
+create table library (
+  cid serial primary key AUTO_INCREMENT NOT NULL,
+  name varchar(50),
+  author varchar(50),
+  type VARCHAR(50),
+  nPages int
+);
+

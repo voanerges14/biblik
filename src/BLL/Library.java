@@ -53,7 +53,16 @@ public class Library {
         }
         return books;
     }
-
+    public boolean editBookById(Book book){
+        try {
+            jdbcStore.edit(book);
+            return true;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
     public boolean removeBookById(int id){
         try {
             jdbcStore.delete(id);
@@ -73,12 +82,9 @@ public class Library {
             return null;
         }
         else if(books.size() == 1){
-            jdbcStore.edit(book, book.getId());
-            return books;
+            jdbcStore.edit(book);
         }
-        else {
             return books;
-        }
     }
 
     public Collection<Book> showAllLibrary() throws SQLException, ClassNotFoundException {

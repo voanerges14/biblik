@@ -13,10 +13,7 @@ import java.util.Scanner;
  * Created by pavlo on 17.10.16.
  */
 public class ConsoleClient {
-    String name = "Unknown";
-    String author = "Unknown";
-    String type = "Unknown";
-    int nPages = 0;
+
     private static  Scanner scanner = new Scanner(System.in);
     private static Library library = new Library();
 
@@ -38,13 +35,17 @@ public class ConsoleClient {
     }
 
     public static String help(){
-        return " -help - use for show information about library\n" +
-                " -slib - for show all library" +
-                "";
+        return  " -help - use for show information about library\n" +
+                " -show - for show all library\n" +
+                " -add - add book to library in format -add [parameters]\n\t [Book_Name Book_Author Type_of_book number_of_pages]\n" +
+                " -remove - delete book from library by name [Book_Name]\n" +
+                " -edit - edit book from library by name [Book_Name]\n" +
+                " -exit - end work in library\n" +
+                " put all parameters without-> []\n";
     }
 
     public static boolean add(String str){
-//        String str = scanner.nextLine();
+        str = str.toUpperCase();
         System.out.println(library.addBook(new Book(
                 -1, str.split(" ")[1], str.split(" ")[2], str.split(" ")[3],
                 Integer.parseInt(str.split(" ")[4]))));
@@ -52,10 +53,10 @@ public class ConsoleClient {
     }
 
     public static boolean remove(String str){
+        str = str.toUpperCase();
         List<Book> books = library.removeBook(str);
         if(books == null){
-            System.out.println(books.get(0).getName() + " no such book!");
-//            return false;
+            System.out.println(/*books.get(0).getName() + */" no such book!");
         }
         else if(books.size() == 1){
             System.out.println(books.get(0).getName() + " was remowed!");
@@ -72,6 +73,7 @@ public class ConsoleClient {
 
 
     public static boolean edit(String name){
+        name = name.toUpperCase();
         Book book = new Book();
         List<Book> books = library.getBooksByName(name);
 
@@ -91,17 +93,17 @@ public class ConsoleClient {
             int t = Integer.parseInt(scanner.next());
             for(Book _book: books) {
                 if (t == _book.getId())
-                    library.editBook(createNewBook(_book), t);
+                    library.editBookById(createNewBook(_book));
             }
 
         }
 
-
+        return true;
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
 //        Library library = new Library();
-        Scanner scanner = new Scanner(System.in);
+//        Scanner scanner = new Scanner(System.in);
 
         System.out.println("Hi dear User, this is our Library\n You can manege our library!");
         System.out.println("Pres '-help' for help in use.");
@@ -119,7 +121,7 @@ public class ConsoleClient {
                     ConsoleClient.add(scanner.nextLine());
                     break;
                 case "-remove":
-                    System.out.println(remove(scanner.nextLine()));
+                    remove(scanner.nextLine());
                     break;
                 case "-edit":
 
