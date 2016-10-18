@@ -12,16 +12,13 @@ import java.util.List;
  */
 public class JDBCStore implements Storage{
         private final Connection connection;
+        private final String user = "bd1f39f1a5d0ba";
+        private final String password = "64bd59b0";
+
         public JDBCStore() throws SQLException, ClassNotFoundException {
             Class.forName("com.mysql.jdbc.Driver");
-//        String AzureStringURL = "jdbc:sqlserver://dmytroki.database.windows.net:1433;database=companies;" +
-//                "user=dmytroki@dmytroki;password=125678965274kihi_;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
-//        this.connection = DriverManager.getConnection(AzureStringURL);
-//            this.connection = DriverManager.getConnection("jdbc:mysql://companies.czrh6kl4gie2.us-west-2.rds.amazonaws.com/companies", "root", "rootroot");
-//        this.connection =  DriverManager.getConnection("jdbc:mysql://localhost:3307/companies", "root", "root");
             this.connection = DriverManager.getConnection("jdbc:mysql://eu-cdbr-azure-west-a.cloudapp.net:3306/acsm_20fce0d183b5ab7"
-                    , "bd1f39f1a5d0ba", "64bd59b0");
-            //this.connection =  DriverManager.getConnection("jdbc:mysql://104.198.56.204:3306/companies", "root", "root");
+                    , user, password);
         }
 
     @Override
@@ -66,7 +63,7 @@ public class JDBCStore implements Storage{
     @Override
     public void edit(Book book) {
         try (final PreparedStatement statement = this.connection.prepareStatement(
-                "UPDATE book SET name = ?, author = ?, type = ?, nPages = ? WHERE id = ?")) {
+                "UPDATE library SET name = ?, author = ?, type = ?, nPages = ? WHERE id = ?")) {
             statement.setString(1, book.getName());
             statement.setString(2, book.getAuthor());
             statement.setString(3, book.getType());
@@ -96,7 +93,8 @@ public class JDBCStore implements Storage{
         {
             Statement statement = connection.createStatement();
             statement.executeUpdate("DELETE FROM library");
-            statement.executeQuery("ALTER SEQUENCE library_id_seq  RESTART WITH 1");
+            statement.executeQuery("ALTER TABLE library AUTO_INCREMENT = 1");
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -109,13 +107,11 @@ public class JDBCStore implements Storage{
                 "select * from library where name = ?"))
         {
             statement.setString(1, bookName);
-            //ResultSet rs = statement.executeQuery();
-            try (final ResultSet rs = statement.executeQuery()) {
+            ResultSet rs = statement.executeQuery();
                 while (rs.next()) {
                     library.add(new Book(rs.getInt("id"), rs.getString("name")
                             , rs.getString("author"), rs.getString("type"), rs.getInt("nPages")));
                 }
-            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

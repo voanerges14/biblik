@@ -1,8 +1,14 @@
 create table library (
-  cid serial primary key AUTO_INCREMENT NOT NULL,
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name varchar(50),
   author varchar(50),
   type VARCHAR(50),
   nPages int
 );
+
+//Delete table
+DROP TABLE libraty
+
+//clean table
+DELETE FROM library
 

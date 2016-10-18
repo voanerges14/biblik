@@ -26,7 +26,6 @@ public class Library {
         }
         books = (List<Book>) jdbcStore.books();
     }
-
     public boolean addBook(Book book){
         try {
             jdbcStore.add(book);
@@ -37,11 +36,9 @@ public class Library {
             return false;
         }
     }
-
     public List<Book> getBooksByName(String name){
         return (List<Book>) jdbcStore.get(name);
     }
-
     public List<Book> removeBook(String name) {
         books = getBooksByName(name);
 
@@ -52,7 +49,6 @@ public class Library {
         }
         return books;
     }
-
     public boolean removeBookById(int id){
         try {
             jdbcStore.delete(id);
@@ -63,20 +59,7 @@ public class Library {
             return false;
         }
     }
-
-    public List<Book> editBook(Book book){
-        books = (List<Book>) jdbcStore.get(name);
-
-        if(books.isEmpty()){
-            return null;
-        }
-        else if(books.size() == 1){
-            jdbcStore.edit(book);
-        }
-        return books;
-    }
-
-    public boolean editBookById(Book book){
+    public boolean editBook(Book book){
         try {
             jdbcStore.edit(book);
             return true;
@@ -85,8 +68,17 @@ public class Library {
             e.printStackTrace();
             return false;
         }
-    }
 
+//        books = (List<Book>) jdbcStore.get(book.getName());
+//
+//        if(books.isEmpty()){
+//            return null;
+//        }
+//        else if(books.size() == 1){
+//            jdbcStore.edit(book);
+//        }
+//        return books;
+    }
     public Collection<Book> showAllLibrary() throws SQLException, ClassNotFoundException {
         books = (List<Book>) jdbcStore.books();
         if(books.isEmpty()) {
@@ -94,4 +86,18 @@ public class Library {
         }
         return books;
     }
+    public void endWork(){
+        jdbcStore.close();
+    }
+//    public boolean editBookById(Book book){
+//        try {
+//            jdbcStore.edit(book);
+//            return true;
+//        }
+//        catch (Exception e) {
+//            e.printStackTrace();
+//            return false;
+//        }
+//    }
+
 }

@@ -22,18 +22,22 @@ public class Book {
     }
 
     public Book(int id, String name, String author, String type, int nPages) {
-        this.name = name;
-        this.author = author;
-        this.type = type;
+        this.id = id;
+        this.name = name.toUpperCase();
+        this.author = author.toUpperCase();
+        this.type = type.toUpperCase();
         this.nPages = nPages;
+    }
+    public void setName(String name) {
+        this.name = name.toUpperCase();
     }
 
     public void setAuthor(String author) {
-        this.author = author;
+        this.author = author.toUpperCase();
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.type = type.toUpperCase();
     }
 
     public void setnPages(int nPages) {
@@ -48,9 +52,6 @@ public class Book {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getAuthor() {
         return author;
@@ -67,11 +68,11 @@ public class Book {
     @Override
     public String toString() {
         return
-                "id: " + getId() + "| " +
-                "Name: " + getName() + "| " +
-                "Author: " + getAuthor() + "| " +
-                "Type: " + getType() + "| "+
-                        "Number of Pages: " + getnPages() + "\n";
+                "id: " + getId() + "\t| " +
+                "Name: " + getName() + "\t| " +
+                "Author: " + getAuthor() + "\t| " +
+                "Type: " + getType() + "\t| "+
+                        "Number of Pages: " + getnPages();
     }
 
     public void setId(int id) {
