@@ -89,15 +89,5 @@ public class Library {
     public void endWork(){
         jdbcStore.close();
     }
-//    public boolean editBookById(Book book){
-//        try {
-//            jdbcStore.edit(book);
-//            return true;
-//        }
-//        catch (Exception e) {
-//            e.printStackTrace();
-//            return false;
-//        }
-//    }
 
 }
