@@ -1,50 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-<<<<<<< HEAD
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Derby (Embedded) - demo" uuid="d21a9566-3983-4891-b55c-c96ddd7c60ce">
-      <driver-ref>derby.embedded</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.apache.derby.jdbc.EmbeddedDriver</jdbc-driver>
-      <jdbc-url>jdbc:derby:localhost:1527/demo;create=true</jdbc-url>
-    </data-source>
-    <data-source source="LOCAL" name="AZURE" uuid="62dbba8f-ebcd-4f76-8fe7-fa73deb1e195">
-=======
-  <component name="DataSourceManagerImpl" format="xml" hash="0">
-    <data-source source="LOCAL" name="MySQL - library@localhost" uuid="e025f6ea-850c-4b63-8d63-d27cb84417ca">
->>>>>>> dd4ee2018fdc22a60a6db2ea1b561e3439b4a90a
+    <data-source source="LOCAL" name="MySQL - library@eu-cdbr-azure-west-a.cloudapp.net" uuid="8d5fef51-a499-4202-9b7f-3c86748e14f7">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://eu-cdbr-azure-west-a.cloudapp.net:3306/acsm_20fce0d183b5ab7</jdbc-url>
+      <jdbc-url>jdbc:mysql://eu-cdbr-azure-west-a.cloudapp.net:3306/library</jdbc-url>
       <driver-properties>
-        <property name="autoReconnect" value="true" />
-        <property name="zeroDateTimeBehavior" value="convertToNull" />
-        <property name="tinyInt1isBit" value="false" />
-        <property name="characterEncoding" value="utf8" />
-        <property name="characterSetResults" value="utf8" />
-        <property name="yearIsDateType" value="false" />
-      </driver-properties>
-    </data-source>
-    <data-source source="LOCAL" name="PostgreSQL - postgres@localhost" uuid="b10da09e-fc9e-4b47-a217-179ae9173ef2">
-      <driver-ref>postgresql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/postgres</jdbc-url>
-    </data-source>
-    <data-source source="LOCAL" name="SQL Server (Microsoft) - Library@dmytroki.database.windows.net" uuid="c53158e5-1afd-485e-8af7-eed61321d50c">
-      <driver-ref>sqlserver.ms</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
-      <jdbc-url>jdbc:sqlserver://dmytroki.database.windows.net:1433;database=Library;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;databaseName=Library;</jdbc-url>
-    </data-source>
-    <data-source source="LOCAL" name="AMAZON" uuid="7e034601-8750-4612-b5fd-bcb7bbe909fe">
-      <driver-ref>mysql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
-      <driver-properties>
-        <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />
         <property name="tinyInt1isBit" value="false" />
         <property name="characterEncoding" value="utf8" />

@@ -1,40 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="Derby (Embedded) - demo" uuid="d21a9566-3983-4891-b55c-c96ddd7c60ce">
+    <data-source name="MySQL - library@eu-cdbr-azure-west-a.cloudapp.net" uuid="8d5fef51-a499-4202-9b7f-3c86748e14f7">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
       <secret-storage>master_key</secret-storage>
-      <user-name>admin</user-name>
-    </data-source>
-    <data-source name="AZURE" uuid="62dbba8f-ebcd-4f76-8fe7-fa73deb1e195">
-      <database-info product="MySQL" version="5.5.45-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
-        <extra-name-characters>#@</extra-name-characters>
-        <identifier-quote-string>`</identifier-quote-string>
-      </database-info>
-      <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
-      <secret-storage>master_key</secret-storage>
+      <first-sync>true</first-sync>
       <user-name>bd1f39f1a5d0ba</user-name>
-    </data-source>
-    <data-source name="PostgreSQL - postgres@localhost" uuid="b10da09e-fc9e-4b47-a217-179ae9173ef2">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
-      <secret-storage>master_key</secret-storage>
-      <first-sync>true</first-sync>
-    </data-source>
-    <data-source name="SQL Server (Microsoft) - Library@dmytroki.database.windows.net" uuid="c53158e5-1afd-485e-8af7-eed61321d50c">
-      <database-info product="Microsoft SQL Server" version="12.00.1605" jdbc-version="4.0" driver-name="Microsoft JDBC Driver 4.0 for SQL Server" driver-version="4.0.2206.100">
-        <extra-name-characters>$#@</extra-name-characters>
-        <identifier-quote-string>&quot;</identifier-quote-string>
-      </database-info>
-      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
-      <secret-storage>master_key</secret-storage>
-      <user-name>dmytroki@dmytroki</user-name>
-      <introspection-scope>*:dbo|Library:*</introspection-scope>
-      <resolve-scope>Library:*</resolve-scope>
-    </data-source>
-    <data-source name="AMAZON" uuid="7e034601-8750-4612-b5fd-bcb7bbe909fe">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
-      <secret-storage>master_key</secret-storage>
-      <first-sync>true</first-sync>
     </data-source>
   </component>
 </project>

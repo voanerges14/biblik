@@ -5,7 +5,6 @@ import DAL.Model.Book;
 import DAL.Store.JDBCStore;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -53,16 +52,7 @@ public class Library {
         }
         return books;
     }
-    public boolean editBookById(Book book){
-        try {
-            jdbcStore.edit(book);
-            return true;
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
+
     public boolean removeBookById(int id){
         try {
             jdbcStore.delete(id);
@@ -82,10 +72,6 @@ public class Library {
         }
         else if(books.size() == 1){
             jdbcStore.edit(book);
-<<<<<<< HEAD
-        }
-            return books;
-=======
         }
         return books;
     }
@@ -99,7 +85,6 @@ public class Library {
             e.printStackTrace();
             return false;
         }
->>>>>>> dd4ee2018fdc22a60a6db2ea1b561e3439b4a90a
     }
 
     public Collection<Book> showAllLibrary() throws SQLException, ClassNotFoundException {

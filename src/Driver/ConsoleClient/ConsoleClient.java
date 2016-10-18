@@ -2,10 +2,8 @@ package Driver.ConsoleClient;
 
 import BLL.Library;
 import DAL.Model.Book;
-import com.sun.org.apache.bcel.internal.classfile.Unknown;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -34,14 +32,14 @@ public class ConsoleClient {
         return book;
     }
 
-    public static String help(){
-        return  " -help - use for show information about library\n" +
+    public static void help(){
+        System.out.println(  " -help - use for show information about library\n" +
                 " -show - for show all library\n" +
                 " -add - add book to library in format -add [parameters]\n\t [Book_Name Book_Author Type_of_book number_of_pages]\n" +
                 " -remove - delete book from library by name [Book_Name]\n" +
                 " -edit - edit book from library by name [Book_Name]\n" +
                 " -exit - end work in library\n" +
-                " put all parameters without-> []\n";
+                " put all parameters without-> []\n");
     }
 
     public static boolean add(String str){
@@ -54,7 +52,7 @@ public class ConsoleClient {
 
     public static boolean remove(String str){
         str = str.toUpperCase();
-        List<Book> books = library.removeBook(str);
+        List<Book> books = library.removeBook(str.split(" ")[1]);
         if(books == null){
             System.out.println(/*books.get(0).getName() + */" no such book!");
         }
@@ -100,10 +98,12 @@ public class ConsoleClient {
 
         return true;
     }
+    public static void show(){
+//        library.showAllLibrary();
+    }
+
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-//        Library library = new Library();
-//        Scanner scanner = new Scanner(System.in);
 
         System.out.println("Hi dear User, this is our Library\n You can manege our library!");
         System.out.println("Pres '-help' for help in use.");
@@ -112,10 +112,10 @@ public class ConsoleClient {
         while (swt){
             switch (scanner.next()){
                 case "-help" :
-                    System.out.println(help());
+                    help();
                     break;
-                case "-slib" :
-                    System.out.println(library.showAllLibrary());
+                case "-show" :
+                    library.showAllLibrary();
                     break;
                 case "-add":
                     ConsoleClient.add(scanner.nextLine());
